@@ -1,120 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Medicare Plans Made Simple | Helms Retirement Solutions</title>
-<meta name="description" content="Compare Medicare Advantage, Medigap, and Part D with independent guidance.">
-<link rel="icon" href="/assets/hrs-logo.png">
-<link rel="stylesheet" href="/assets/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medicare • Helms Retirement Solutions</title>
+  <meta name="description" content="Medicare basics, Medigap vs MA, and enrollment support." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap bar">
-    <a class="brand" href="/">
-      <img src="/assets/hrs-logo.png" alt="Helms Retirement Solutions" class="logo">
-      Helms Retirement Solutions
-    </a>
-    <nav class="nav">
-      <a href="/life-insurance">Life Insurance</a>
-      <a class="active" href="/medicare">Medicare</a>
-      <a class="btn" href="https://calendly.com/helmsretirement/15min" data-calendly>Book Appointment</a>
+  <header class="site-header">
+    <img class="logo" src="assets/helms-logo.png" alt="Helms Retirement Solutions" />
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="medicare.html" class="active">Medicare</a>
+      <a href="life-insurance.html">Life Insurance</a>
+      <a href="privacy.html">Privacy</a>
+      <a class="cta" href="https://calendly.com/helmsretirement" target="_blank" rel="noopener">Book a Call</a>
     </nav>
-  </div>
-</header>
+  </header>
 
-<main>
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <h1>Medicare Made Simple — Get the Right Plan</h1>
-        <p class="lead">Independent guidance on Medicare Advantage, Medigap (Supplement), and Prescription Drug Plans (Part D).</p>
-        <div class="badges"><span class="badge">Local & Trusted</span><span class="badge">No Obligation</span><span class="badge">Clear Options</span></div>
-        <div class="actions">
-          <a class="btn" href="#quote">Get Help with Medicare</a>
-          <a class="btn secondary" href="https://calendly.com/helmsretirement/15min" data-calendly>15-min Call</a>
-        </div>
-        <p class="tiny">🔒 Your information is secure & never sold.</p>
-      </div>
-      <div class="hero-visual">
-        <img src="/assets/hrs-logo.png" alt="Medicare Plans">
-      </div>
-    </div>
-  </section>
+  <main class="content">
+    <h1>Medicare Made Simple</h1>
+    <p>We help you compare Medigap (Plan G/N), Medicare Advantage, and Part D—by premium, benefits, and doctor access.</p>
 
-  <!-- Carrier carousel -->
-  <section class="carrier-strip">
-    <div class="wrap logos">
-      <span class="cap">Trusted Carriers</span>
-      <div class="logo-carousel" aria-label="Carrier logos">
-        <button class="lc-btn prev" aria-label="Previous logos">‹</button>
-        <ul class="lc-track" aria-live="polite">
-          <li class="lc-item"><img src="/assets/carriers/unitedhealthcare.png" alt="UnitedHealthcare"></li>
-          <li class="lc-item"><img src="/assets/carriers/humana.png" alt="Humana"></li>
-          <li class="lc-item"><img src="/assets/carriers/cigna.png" alt="Cigna"></li>
-          <li class="lc-item"><img src="/assets/carriers/aetna.png" alt="Aetna"></li>
-          <li class="lc-item"><img src="/assets/carriers/mutual-of-omaha.png" alt="Mutual of Omaha"></li>
-          <li class="lc-item"><img src="/assets/carriers/royal-neighbors.png" alt="Royal Neighbors of America"></li>
-          <li class="lc-item"><img src="/assets/carriers/medica.png" alt="Medica"></li>
+    <div class="grid">
+      <article class="card">
+        <h2>Medigap (Supplement)</h2>
+        <ul>
+          <li>Stable coverage, broad access</li>
+          <li>Higher premium, lower out-of-pocket</li>
+          <li>Popular: Plan G / Plan N</li>
         </ul>
-        <button class="lc-btn next" aria-label="Next logos">›</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap" id="quote" style="margin-top:18px">
-    <div class="card">
-      <h2>Tell Us What You Need</h2>
-      <p class="lead">Answer a few quick questions and we’ll prepare your options.</p>
-      <form class="js-lead">
-        <div class="grid">
-          <div><label>Full Name</label><input required placeholder="Jane Smith"></div>
-          <div><label>Phone</label><input required placeholder="(402) 237-6592"></div>
-        </div>
-        <div class="grid">
-          <div><label>Email</label><input type="email" required placeholder="you@example.com"></div>
-          <div><label>ZIP Code</label><input placeholder="68104"></div>
-        </div>
-        <div class="grid">
-          <div>
-            <label>Plan Interest</label>
-            <select required>
-              <option value="" disabled selected>Select one</option>
-              <option>Medicare Advantage</option>
-              <option>Medigap (Supplement)</option>
-              <option>Part D (Prescription)</option>
-              <option>Not sure — please advise</option>
-            </select>
-          </div>
-          <div>
-            <label>Age Range</label>
-            <select required>
-              <option value="" disabled selected>Select one</option>
-              <option>64 or approaching 65</option>
-              <option>65–69</option>
-              <option>70–74</option>
-              <option>75+</option>
-            </select>
-          </div>
-        </div>
-        <button class="btn" type="submit">Submit & Continue</button>
-        <div class="disclaimer">By submitting, you agree to be contacted by Helms Retirement Solutions by phone, text, or email. Msg & data rates may apply. Opt out anytime.</div>
-      </form>
+      </article>
+      <article class="card">
+        <h2>Medicare Advantage (MA)</h2>
+        <ul>
+          <li>Low or $0 premium plans</li>
+          <li>Network & prior auth rules</li>
+          <li>Bundle extras (dental/vision/OTC)</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Part D (Rx)</h2>
+        <ul>
+          <li>Drug formularies & tiers</li>
+          <li>Preferred pharmacies</li>
+          <li>Annual plan review</li>
+        </ul>
+      </article>
     </div>
 
-    <div id="thankyou" class="card ty" hidden>
-      <h2>Thanks — You’re All Set!</h2>
-      <p class="lead">Pick a time for a quick 15-minute call so we can go over your Medicare options.</p>
-      <div id="calendly-inline-widget" style="min-width:320px;height:680px;"></div>
-      <p class="tiny">Licensed & Trusted in NE • IA • SD</p>
-    </div>
-  </section>
-</main>
+    <p><a class="cta" href="https://calendly.com/helmsretirement" target="_blank" rel="noopener">Get Your Medicare Review</a></p>
+  </main>
 
-<footer class="wrap footer">
-  © <span id="yr"></span> Helms Retirement Solutions • <a href="/privacy">Privacy</a> • <a href="/terms">Terms</a>
-</footer>
+  <footer class="site-footer">
+    <p>© 2025 Helms Retirement Solutions • <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
 
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script src="/assets/script.js"></script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
