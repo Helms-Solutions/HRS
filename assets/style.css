@@ -1,6 +1,11 @@
-/* ===========
-   Base / Reset
-   =========== */
+/* ======================================================
+   Helms Retirement Solutions • assets/style.css
+   Clean, modern, responsive styles + hero watermark logo
+   ====================================================== */
+
+/* ----------
+   Reset
+----------- */
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -11,19 +16,27 @@ html, body {
   height: 100%;
 }
 
+img { max-width: 100%; height: auto; display: block; }
+
+/* ----------
+   Theme
+----------- */
 :root{
-  /* Brand palette (tweak as you like) */
+  /* Brand palette */
   --bg: #0b1220;           /* page background */
   --panel: #0f172a;        /* header/footer/cards */
+  --panel-2: #0c1426;      /* subtle panel gradient end */
   --muted: #cbd5e1;        /* body text */
   --heading: #e5e7eb;      /* headings */
   --primary: #60a5fa;      /* buttons/links */
   --primary-600: #3b82f6;  /* hover */
-  --accent: #34d399;       /* small accents */
-  --border: #1e293b;
-  --shadow: 0 10px 25px rgba(0,0,0,.25);
+  --accent: #34d399;       /* focus/active accents */
+  --border: #1e293b;       /* subtle borders */
+
+  --shadow: 0 12px 28px rgba(0,0,0,.28);
   --radius: 16px;
   --maxw: 1100px;
+
   --space: clamp(14px, 1.4vw, 18px);
   --space-lg: clamp(22px, 2.2vw, 28px);
   --space-xl: clamp(36px, 4vw, 56px);
@@ -31,23 +44,31 @@ html, body {
 
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  background: radial-gradient(1200px 800px at 10% 0%, #111933 0%, var(--bg) 55%) no-repeat fixed;
+  background: radial-gradient(1200px 800px at 10% 0%, #111933 0%, var(--bg) 55%) fixed;
   color: var(--muted);
   line-height: 1.55;
 }
 
-/* ===========
+/* ----------
    Utilities
-   =========== */
+----------- */
 .container {
   max-width: var(--maxw);
   margin: 0 auto;
   padding-inline: clamp(14px, 3vw, 24px);
 }
 
-/* ===========
+a { color: var(--primary); text-decoration: none; }
+a:hover { color: #93c5fd; }
+a:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ----------
    Header / Nav
-   =========== */
+----------- */
 .site-header {
   position: sticky;
   top: 0;
@@ -67,9 +88,8 @@ body {
 }
 
 .logo {
-  height: 48px;
+  max-height: 52px; /* respects width/height attrs in HTML, caps overly large images */
   width: auto;
-  display: block;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,.35));
 }
 
@@ -107,13 +127,11 @@ body {
   border-radius: 999px;
   box-shadow: 0 8px 18px rgba(59,130,246,.35);
 }
-.site-nav .cta:hover{
-  transform: translateY(-1px);
-}
+.site-nav .cta:hover{ transform: translateY(-1px); }
 
-/* ===========
+/* ----------
    Hero
-   =========== */
+----------- */
 .hero{
   padding: var(--space-xl) 0 var(--space-lg);
   text-align: center;
@@ -142,25 +160,55 @@ body {
   background: linear-gradient(180deg, var(--primary), var(--primary-600));
   color: #0b1020;
   border-radius: 999px;
-  text-decoration: none;
   font-weight: 700;
   box-shadow: 0 12px 26px rgba(59,130,246,.35);
 }
 .hero .cta:hover{ transform: translateY(-1px); }
 
-/* ===========
+/* --- Hero watermark (HRS logo) --- */
+.hero { position: relative; overflow: hidden; }
+.hero::before{
+  content:"";
+  position:absolute;
+  top:50%; left:50%;
+  width:min(95vmin, 1000px);
+  height:min(95vmin, 1000px);
+  background:url("assets/helms-logo.png") no-repeat center/contain;
+  opacity:0.065; /* tweak 0.03–0.08 */
+  transform:translate(-50%,-50%) rotate(-2deg);
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.25));
+  z-index:0;
+  pointer-events:none;
+}
+.hero > * { position: relative; z-index: 1; }
+
+/* Optional subtle readability overlay for hero */
+.hero::after{
+  content:"";
+  position:absolute; inset:0;
+  background: radial-gradient(60% 50% at 50% 40%, rgba(0,0,0,.15), transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 640px){
+  .hero::before{ opacity: 0.08; width: 120vmin; height: 120vmin; }
+}
+
+/* ----------
    Cards / Grid
-   =========== */
+----------- */
 .grid{
   display: grid;
   gap: 18px;
   grid-template-columns: repeat(12, 1fr);
   padding: 0 0 var(--space-xl);
+  margin-top: var(--space-lg);
 }
 
 .card{
   grid-column: span 12;
-  background: linear-gradient(180deg, #0f172a, #0c1426);
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: clamp(16px, 2.2vw, 22px);
@@ -175,20 +223,13 @@ body {
 
 .card p, .card li { color: #d6d9e4; }
 
-.card a{
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-}
-.card a:hover{ color: #93c5fd; }
-
 @media (min-width: 720px){
   .grid .card{ grid-column: span 4; }
 }
 
-/* ===========
+/* ----------
    Content Pages
-   =========== */
+----------- */
 .content{
   padding: var(--space-lg) 0 var(--space-xl);
 }
@@ -203,11 +244,59 @@ body {
   max-width: 840px;
 }
 
-.content .grid{ margin-top: var(--space-lg); }
+/* ----------
+   About Page Helpers
+----------- */
+.about-wrap{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
+  margin: 14px 0 28px;
+}
+.headshot{
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: #0f172a;
+  object-fit: cover;
+}
+.about-list{ padding-left: 18px; }
+.about-list li{ margin: 6px 0; }
 
-/* ===========
+@media (min-width: 780px){
+  .about-wrap{
+    grid-template-columns: 260px 1fr;
+    gap: 26px;
+  }
+}
+
+/* ----------
+   Brand Strip
+----------- */
+.brand-strip{ padding-bottom: var(--space-xl); }
+.brand-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  box-shadow: var(--shadow);
+}
+.brand-row img{
+  height: 34px;
+  width: auto;
+  opacity: .9;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.35));
+}
+
+/* ----------
    Footer
-   =========== */
+----------- */
 .site-footer{
   border-top: 1px solid var(--border);
   background: rgba(15,23,42,.7);
@@ -216,67 +305,28 @@ body {
   color: #aeb6c7;
 }
 
-/* ===========
-   Links / Focus
-   =========== */
-a { outline: none; }
-a:focus-visible{
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 8px;
-}
-
-/* ===========
-   Images
-   =========== */
-img{ max-width: 100%; height: auto; }
-
-/* ===========
+/* ----------
    Small niceties
-   =========== */
+----------- */
 ::selection{
   background: rgba(96,165,250,.35);
   color: var(--heading);
 }
-/* ===== HERO-ONLY WATERMARK ===== */
-.hero {
-  position: relative;
-  overflow: hidden;
-}
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(90vmin, 920px);
-  height: min(90vmin, 920px);
-  background: url("assets/helms-logo.png") no-repeat center center / contain;
-  opacity: 0.055;            /* tweak between .03 and .08 */
-  transform: translate(-50%, -50%) rotate(-2deg);
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,.25));
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Keep hero content above the watermark */
-.hero > * { position: relative; z-index: 1; }
-
-/* Slight darken for readability on small screens */
-@media (max-width: 640px){
-  .hero::before{ opacity: 0.07; width: 110vmin; height: 110vmin; }
-}
-/* HERO WATERMARK (strong test) */
-.hero { position: relative; overflow: hidden; }
-.hero::before{
+/* ----------
+   OPTIONAL: Site-wide watermark (disabled by default)
+   To enable site-wide watermark, uncomment this block.
+----------- */
+/*
+body::before{
   content:"";
-  position:absolute;
-  top:50%; left:50%;
-  width:min(100vmin,1000px);
-  height:min(100vmin,1000px);
+  position:fixed; inset:0; margin:auto;
+  width:min(95vmin,1000px); height:min(95vmin,1000px);
   background:url("assets/helms-logo.png") no-repeat center/contain;
-  opacity:0.14;               /* make it obvious first */
-  transform:translate(-50%,-50%) rotate(-2deg);
-  z-index:0; pointer-events:none;
+  opacity:0.04;  transform:rotate(-2deg);
+  pointer-events:none; z-index:0;
 }
-.hero > * { position: relative; z-index: 1; }
+body > * { position:relative; z-index:1; }
+*/
+
+/* End of file */
