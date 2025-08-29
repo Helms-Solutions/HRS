@@ -4,5 +4,12 @@
     { "source": "/medicare",       "destination": "/medicare.html" },
     { "source": "/privacy",        "destination": "/privacy.html" },
     { "source": "/terms",          "destination": "/terms.html" }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "/",
+      "permanent": false
+    }
   ]
 }
