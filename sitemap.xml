@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.helmsretirement.com/</loc></url>
-  <url><loc>https://www.helmsretirement.com/medicare.html</loc></url>
-  <url><loc>https://www.helmsretirement.com/life-insurance.html</loc></url>
-  <url><loc>https://www.helmsretirement.com/privacy.html</loc></url>
+
+  <!-- Main Landing Page -->
+  <url>
+    <loc>https://www.helmsretirement.com/hero.html</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://www.helmsretirement.com/about.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Root Domain -->
+  <url>
+    <loc>https://www.helmsretirement.com/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Medicare Page -->
+  <url>
+    <loc>https://www.helmsretirement.com/medicare.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Life Insurance Page -->
+  <url>
+    <loc>https://www.helmsretirement.com/life-insurance.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Privacy Policy Page -->
+  <url>
+    <loc>https://www.helmsretirement.com/privacy.html</loc>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
