@@ -135,6 +135,11 @@ a {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
 }
 
+.site-nav .nav-phone {
+  color: var(--gold-2);
+  white-space: nowrap;
+}
+
 .site-nav .nav-cta:hover {
   color: #07172b;
   background: var(--gold);
@@ -230,11 +235,40 @@ a {
   font-size: clamp(1.05rem, 2.2vw, 1.28rem);
 }
 
+.service-area {
+  max-width: 660px;
+  margin: 14px 0 0;
+  color: var(--gold-2);
+  font-weight: 800;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 34px;
+}
+
+.hero-contact,
+.medicare-note,
+.cta-note {
+  max-width: 650px;
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+}
+
+.hero-contact a,
+.cta-note a {
+  color: var(--gold-2);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.medicare-note {
+  font-size: 0.82rem;
 }
 
 .button {
@@ -1102,6 +1136,12 @@ a {
   margin: 0;
 }
 
+.footer-service-area {
+  margin-top: 14px;
+  color: rgba(228, 189, 104, 0.92);
+  font-weight: 700;
+}
+
 .site-footer a {
   color: var(--white);
   font-weight: 700;
@@ -1118,6 +1158,12 @@ a {
   margin-top: 34px;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.legal-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .disclaimer {
@@ -1166,6 +1212,10 @@ a {
 
   .site-nav .nav-cta {
     margin-left: 0;
+    text-align: center;
+  }
+
+  .site-nav .nav-phone {
     text-align: center;
   }
 
