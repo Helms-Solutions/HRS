@@ -81,7 +81,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 22px;
+  gap: 16px;
 }
 
 .brand {
@@ -110,14 +110,15 @@ a {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 8px;
+  flex-wrap: nowrap;
+  gap: 4px;
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
 .site-nav a {
-  padding: 10px 12px;
+  padding: 10px 9px;
   border-radius: var(--radius);
   white-space: nowrap;
   transition: color 180ms ease, background 180ms ease, transform 180ms ease;
@@ -130,15 +131,36 @@ a {
 }
 
 .site-nav .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 108px;
   margin-left: 4px;
   color: #07172b;
   background: var(--gold-2);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
 }
 
 .site-nav .nav-phone {
   color: var(--gold-2);
   white-space: nowrap;
+}
+
+@media (max-width: 1080px) {
+  .brand-name {
+    display: none;
+  }
+
+  .logo {
+    width: 190px;
+  }
+}
+
+@media (max-width: 1160px) {
+  .site-nav .nav-phone {
+    display: none;
+  }
 }
 
 .site-nav .nav-cta:hover {
