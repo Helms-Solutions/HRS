@@ -180,9 +180,9 @@ a {
   display: none;
   width: 44px;
   height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(228, 189, 104, 0.72);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(228, 189, 104, 0.14);
   cursor: pointer;
 }
 
@@ -191,7 +191,7 @@ a {
   width: 20px;
   height: 2px;
   margin: 5px auto;
-  background: var(--white);
+  background: var(--gold-2);
   transition: transform 180ms ease, opacity 180ms ease;
 }
 
