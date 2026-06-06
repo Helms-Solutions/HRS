@@ -134,7 +134,9 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 108px;
+  min-width: 116px;
+  min-height: 38px;
+  padding: 9px 12px;
   color: #07172b;
   background: var(--gold-2);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
@@ -144,15 +146,15 @@ a {
 .nav-actions {
   display: inline-flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 4px;
+  align-items: center;
+  gap: 5px;
   margin-left: 6px;
 }
 
 .site-nav .nav-phone {
   padding: 0;
   color: var(--gold-2);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
@@ -560,6 +562,36 @@ a {
   height: 10px;
   border-radius: 50%;
   background: var(--gold-2);
+}
+
+.call-travis-card {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: var(--radius);
+  color: var(--navy);
+  background: var(--white);
+}
+
+.call-travis-card span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.call-travis-card strong {
+  display: block;
+  font-size: 1.12rem;
+  line-height: 1.25;
+}
+
+.call-travis-card a {
+  color: var(--navy);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 .about-hero-grid {
