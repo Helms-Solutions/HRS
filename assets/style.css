@@ -119,6 +119,7 @@ a {
 .site-nav a {
   padding: 10px 12px;
   border-radius: var(--radius);
+  white-space: nowrap;
   transition: color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
