@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retirement Blueprint | Helms Retirement Solutions</title>
+  <meta name="description" content="Request the Helms Retirement Solutions Retirement Blueprint and confirm your email to download the workbook." />
+
+  <link rel="icon" href="assets/helms-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+
+  <meta property="og:title" content="Retirement Blueprint | Helms Retirement Solutions" />
+  <meta property="og:description" content="A simple workbook for retirement income, Medicare, Social Security, tax, estate, and risk planning questions." />
+  <meta property="og:image" content="assets/helms-logo.png" />
+  <meta property="og:type" content="website" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Helms Retirement Solutions home">
+        <img class="logo" src="assets/helms-logo.png" alt="Helms Retirement Solutions" width="220" height="54" />
+        <span class="brand-name">Helms<br />Retirement<br />Solutions</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Menu</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="medicare.html">Medicare</a>
+        <a href="life-insurance.html">Life Insurance</a>
+        <a href="planning-areas.html">Planning Areas</a>
+        <a href="about.html">About</a>
+        <span class="nav-actions">
+          <a class="nav-phone" href="tel:+14022376592">Call (402) 237-6592</a>
+          <a class="nav-cta" href="https://calendly.com/helmsretirement" target="_blank" rel="noopener">Book a Call</a>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blueprint-page-hero">
+      <div class="container blueprint-page-grid">
+        <div class="blueprint-page-copy reveal">
+          <p class="eyebrow">Free retirement workbook</p>
+          <h1>Download the Retirement Blueprint</h1>
+          <p class="hero-subtitle">A simple, scan-friendly guide to help you organize retirement income, Medicare, Social Security, tax questions, estate planning, and risk decisions.</p>
+          <ul class="blueprint-list blueprint-page-list">
+            <li>Retirement income worksheet</li>
+            <li>Medicare and Social Security planning pages</li>
+            <li>Tax, estate, and risk checklists</li>
+            <li>90-day action plan and review guide</li>
+          </ul>
+          <div class="blueprint-author-card">
+            <img src="assets/headshot_1.jpg" alt="Travis Helms" width="96" height="96" />
+            <div>
+              <strong>Meet Travis Helms</strong>
+              <span>Independent Retirement Strategist</span>
+              <p>Helping families retire with confidence through education, not pressure.</p>
+            </div>
+          </div>
+          <p class="medicare-note">Educational information only. Not legal, tax, financial, medical, or government advice. Not affiliated with or endorsed by the U.S. government or the federal Medicare program.</p>
+        </div>
+
+        <form class="blueprint-form reveal" data-blueprint-form data-endpoint="https://uqkchegglsznnxbynhjp.supabase.co/functions/v1/retirement-blueprint">
+          <div>
+            <h3>Send me the blueprint</h3>
+            <p>Confirm your email and the PDF download link will open automatically.</p>
+          </div>
+
+          <div class="form-grid">
+            <label>
+              First name
+              <input type="text" name="firstName" autocomplete="given-name" required />
+            </label>
+            <label>
+              Last name
+              <input type="text" name="lastName" autocomplete="family-name" />
+            </label>
+          </div>
+
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+
+          <label>
+            Phone
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+
+          <div class="form-grid">
+            <label>
+              State
+              <select name="state">
+                <option value="">Select state</option>
+                <option value="Nebraska">Nebraska</option>
+                <option value="Iowa">Iowa</option>
+                <option value="South Dakota">South Dakota</option>
+                <option value="Colorado">Colorado</option>
+                <option value="New Mexico">New Mexico</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label>
+              Main interest
+              <select name="interest">
+                <option value="">Select topic</option>
+                <option value="Retirement Income">Retirement Income</option>
+                <option value="Medicare">Medicare</option>
+                <option value="Social Security">Social Security</option>
+                <option value="Taxes">Taxes</option>
+                <option value="Estate Planning">Estate Planning</option>
+                <option value="General Retirement Review">General Retirement Review</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="checkbox-line">
+            <input type="checkbox" name="emailConsent" required />
+            <span>I request the Retirement Blueprint and agree that Helms Retirement Solutions may contact me by email or phone about retirement, Medicare, and insurance-related options. I understand I can opt out at any time.</span>
+          </label>
+
+          <label class="checkbox-line">
+            <input type="checkbox" name="smsConsent" />
+            <span>I agree that Helms Retirement Solutions may contact me by text message. Message and data rates may apply. Consent is not required to receive the Retirement Blueprint.</span>
+          </label>
+
+          <label class="hp-field" aria-hidden="true">
+            <span>Company</span>
+            <input type="text" name="company" tabindex="-1" autocomplete="off" />
+          </label>
+
+          <button class="button button-primary" type="submit">Send Confirmation Email</button>
+          <p class="form-status" data-blueprint-status role="status" aria-live="polite"></p>
+          <p class="form-fine-print">Your information is used to send the blueprint, confirm your request, and follow up about related retirement planning topics. You can unsubscribe or opt out at any time.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section blueprint-detail-section">
+      <div class="container blueprint-detail-grid">
+        <div class="blueprint-preview-panel reveal">
+          <span class="preview-label">Inside the guide</span>
+          <h2>Built for quick decisions, not homework.</h2>
+          <div class="preview-pages" aria-label="Blueprint page topics">
+            <span>Income</span>
+            <span>Medicare</span>
+            <span>Social Security</span>
+            <span>Taxes</span>
+            <span>Estate</span>
+            <span>Risk</span>
+          </div>
+        </div>
+        <div class="blueprint-review-card reveal">
+          <h2>What Happens During Your Retirement Review?</h2>
+          <ol class="review-steps">
+            <li>Income Review</li>
+            <li>Medicare Review</li>
+            <li>Tax Discussion</li>
+            <li>Risk Analysis</li>
+            <li>Recommendations</li>
+          </ol>
+          <blockquote>
+            "Travis made Medicare easy to understand and helped us avoid an expensive mistake."
+            <cite>Sue and Jim H., Omaha</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-logo" src="assets/helms-logo.png" alt="Helms Retirement Solutions" width="190" height="46" />
+        <p>Personalized guidance for Medicare, Life Insurance, Final Expense, and retirement protection options.</p>
+        <p class="footer-service-area">Serving Nebraska, Iowa, South Dakota, Colorado, and New Mexico.</p>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <p>
+          Helms Retirement Solutions<br />
+          <a href="tel:+14022376592">(402) 237-6592</a><br />
+          <a href="mailto:helmsretirement@gmail.com">helmsretirement@gmail.com</a><br />
+          <a href="https://calendly.com/helmsretirement" target="_blank" rel="noopener">Schedule a consultation</a>
+        </p>
+      </div>
+      <div>
+        <h2>Resources</h2>
+        <p><a href="retirement-blueprint.html">Retirement Blueprint</a></p>
+        <p><a href="https://www.facebook.com/profile.php?id=61579837005296" target="_blank" rel="noopener">Facebook</a></p>
+        <p><a href="privacy.html">Privacy Policy</a></p>
+        <p><a href="terms.html">Terms of Use</a></p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Helms Retirement Solutions. All rights reserved.</p>
+      <p class="disclaimer">Medicare Disclaimer: Helms Retirement Solutions is a privately owned and operated insurance agency and is not affiliated with or endorsed by the U.S. government or the federal Medicare program. We do not offer every plan available in your area. Any information provided is limited to plans and carriers we represent. Plan availability, premiums, benefits, and eligibility may vary by carrier and service area.</p>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

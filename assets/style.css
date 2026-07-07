@@ -766,6 +766,290 @@ a {
   font-weight: 800;
 }
 
+.blueprint-section {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(228, 237, 246, 0.82));
+}
+
+.blueprint-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1fr);
+  gap: 36px;
+  align-items: start;
+}
+
+.blueprint-list {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.blueprint-list li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.blueprint-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.6em;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold-2);
+  box-shadow: 0 0 0 5px rgba(228, 189, 104, 0.2);
+}
+
+.blueprint-disclaimer,
+.form-fine-print {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.blueprint-form {
+  display: grid;
+  gap: 16px;
+  padding: 26px;
+  border: 1px solid rgba(11, 31, 58, 0.12);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.blueprint-form h3 {
+  margin: 0 0 4px;
+  color: var(--navy);
+  font-size: 1.45rem;
+  line-height: 1.15;
+}
+
+.blueprint-form p {
+  margin: 0;
+}
+
+.blueprint-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.blueprint-form input,
+.blueprint-form select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid rgba(11, 31, 58, 0.18);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background: var(--white);
+  font: inherit;
+}
+
+.blueprint-form input:focus,
+.blueprint-form select:focus {
+  outline: 3px solid rgba(228, 189, 104, 0.35);
+  border-color: var(--gold);
+}
+
+.blueprint-page-hero {
+  padding: 86px 0 72px;
+  color: var(--white);
+  background: linear-gradient(115deg, rgba(8, 28, 54, 0.98), rgba(23, 69, 111, 0.93));
+}
+
+.blueprint-page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.75fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.blueprint-page-copy h1 {
+  max-width: 740px;
+  color: var(--white);
+  font-size: clamp(2.4rem, 7vw, 4.4rem);
+  line-height: 1.05;
+}
+
+.blueprint-page-list li {
+  color: var(--white);
+}
+
+.blueprint-page-list li::before {
+  background: var(--gold-2);
+}
+
+.blueprint-page-hero .blueprint-form {
+  color: var(--ink);
+}
+
+.blueprint-author-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 18px;
+  max-width: 640px;
+  margin-top: 28px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.blueprint-author-card img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.blueprint-author-card strong,
+.blueprint-author-card span {
+  display: block;
+}
+
+.blueprint-author-card strong {
+  color: var(--white);
+  font-size: 1.12rem;
+}
+
+.blueprint-author-card span {
+  margin-top: 4px;
+  color: var(--gold-2);
+  font-weight: 800;
+}
+
+.blueprint-author-card p {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.blueprint-detail-section {
+  background: var(--paper);
+}
+
+.blueprint-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  gap: 30px;
+  align-items: stretch;
+}
+
+.blueprint-preview-panel,
+.blueprint-review-card {
+  padding: 28px;
+  border: 1px solid rgba(11, 31, 58, 0.1);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 18px 45px rgba(11, 31, 58, 0.08);
+}
+
+.preview-label {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.preview-pages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.preview-pages span {
+  min-height: 72px;
+  padding: 16px;
+  border: 1px solid rgba(11, 31, 58, 0.1);
+  border-left: 5px solid var(--gold-2);
+  border-radius: var(--radius);
+  color: var(--navy);
+  background: rgba(228, 237, 246, 0.55);
+  font-weight: 800;
+}
+
+.review-steps {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0;
+  padding-left: 20px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.blueprint-review-card blockquote {
+  margin: 22px 0 0;
+  padding: 20px;
+  border-left: 5px solid var(--gold-2);
+  border-radius: var(--radius);
+  color: var(--navy);
+  background: rgba(228, 237, 246, 0.7);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.blueprint-review-card cite {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.checkbox-line {
+  grid-template-columns: 18px 1fr;
+  align-items: start;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.checkbox-line input {
+  width: 18px;
+  min-height: 18px;
+  margin-top: 3px;
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+}
+
+.form-status {
+  min-height: 24px;
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.form-status.is-error {
+  color: #9b1c1c;
+}
+
+.form-fine-print a {
+  color: var(--navy);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .why {
   background:
     radial-gradient(circle at 18% 18%, rgba(228, 189, 104, 0.16), transparent 28%),
@@ -1297,6 +1581,9 @@ a {
   .hero-grid,
   .planning-hero .hero-grid,
   .about-hero-grid,
+  .blueprint-grid,
+  .blueprint-page-grid,
+  .blueprint-detail-grid,
   .why-grid,
   .support-grid,
   .about-intro-grid,
@@ -1355,6 +1642,7 @@ a {
 
   .hero-actions,
   .hero-stats,
+  .form-grid,
   .process-list,
   .why-list,
   .planning-card-grid,
@@ -1365,6 +1653,18 @@ a {
 
   .hero-actions {
     display: grid;
+  }
+
+  .blueprint-page-hero {
+    padding: 58px 0;
+  }
+
+  .blueprint-author-card {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-pages {
+    grid-template-columns: 1fr;
   }
 
   .button {
