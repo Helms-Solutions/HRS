@@ -433,10 +433,11 @@ def second_question_page(c, guide):
     else:
         para(c, "Check each item that feels mostly handled. Your score is a starting point for the next conversation.", 58, y, 496, size=12.5, leading=18, color=MUTED)
         y = 590
-        for item in guide["readiness"]:
+        items = guide.get("score_items", guide["readiness"])
+        for item in items:
             checkbox(c, 70, y, item, 448)
             y -= 41
-        max_score = len(guide.get("score_items", guide["readiness"]))
+        max_score = len(items)
         card(c, 58, 150, 496, 64, fill=colors.HexColor("#FFF8EA"), stroke=GOLD_2)
         c.setFillColor(NAVY)
         c.setFont("Helvetica-Bold", 13)
