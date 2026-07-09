@@ -43,6 +43,34 @@ const blueprintForm = document.querySelector("[data-blueprint-form]");
 if (blueprintForm) {
   const status = blueprintForm.querySelector("[data-blueprint-status]");
   const submitButton = blueprintForm.querySelector("button[type='submit']");
+  const guideSelect = blueprintForm.querySelector("select[name='interest']");
+  const guideLabels = {
+    "medicare": "Medicare Timeline Guide",
+    "social-security": "Social Security & Income Guide",
+    "tax": "Retirement Tax Guide",
+    "family-protection": "Family Protection Guide",
+  };
+  const guideAliases = {
+    medicare: "medicare",
+    socialsecurity: "social-security",
+    social: "social-security",
+    income: "social-security",
+    tax: "tax",
+    taxes: "tax",
+    family: "family-protection",
+    protection: "family-protection",
+    life: "family-protection",
+  };
+
+  if (guideSelect) {
+    const params = new URLSearchParams(window.location.search);
+    const requestedGuide = (params.get("guide") || params.get("interest") || "").toLowerCase().replace(/[^a-z]/g, "");
+    const guideValue = guideAliases[requestedGuide] || params.get("guide") || params.get("interest");
+
+    if (guideValue && guideLabels[guideValue]) {
+      guideSelect.value = guideValue;
+    }
+  }
 
   blueprintForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -60,6 +88,7 @@ if (blueprintForm) {
       phone: formData.get("phone"),
       state: formData.get("state"),
       interest: formData.get("interest"),
+      guideTitle: guideLabels[formData.get("interest")] || "Selected retirement guide",
       emailConsent: formData.get("emailConsent") === "on",
       smsConsent: formData.get("smsConsent") === "on",
       company: formData.get("company"),
@@ -93,7 +122,7 @@ if (blueprintForm) {
       blueprintForm.reset();
 
       if (status) {
-        status.textContent = result.message || "Please check your email to confirm and download the blueprint.";
+        status.textContent = result.message || "Please check your email to confirm and download the guide.";
       }
     } catch (error) {
       if (status) {

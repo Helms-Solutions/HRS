@@ -154,21 +154,22 @@
     <section class="section blueprint-section" id="retirement-blueprint">
       <div class="container blueprint-grid">
         <div class="section-heading reveal">
-          <p class="eyebrow">Free Retirement Resource</p>
-          <h2>Download the Retirement Blueprint</h2>
-          <p>Get a practical checklist for organizing Medicare, life insurance, final expense, income protection, and beneficiary questions before retirement decisions pile up.</p>
+          <p class="eyebrow">Free Retirement Resources</p>
+          <h2>Choose a Retirement Guide</h2>
+          <p>Pick the guide that matches your biggest question: Medicare timing, Social Security income, retirement taxes, or family protection planning.</p>
           <ul class="blueprint-list">
-            <li>Retirement coverage questions to review before choosing a plan</li>
-            <li>Medicare and prescription considerations to bring into a conversation</li>
-            <li>Family protection and final expense planning prompts</li>
+            <li>Medicare Timeline Guide</li>
+            <li>Social Security &amp; Income Guide</li>
+            <li>Retirement Tax Guide</li>
+            <li>Family Protection Guide</li>
           </ul>
-          <p class="blueprint-disclaimer">Educational information only. This blueprint is not legal, tax, financial, medical, or government advice.</p>
+          <p class="blueprint-disclaimer">Educational information only. These guides are not legal, tax, financial, medical, or government advice.</p>
         </div>
 
         <form class="blueprint-form reveal" data-blueprint-form data-endpoint="https://uqkchegglsznnxbynhjp.supabase.co/functions/v1/retirement-blueprint">
           <div>
-            <h3>Send me the blueprint</h3>
-            <p>Confirm your email after submitting and the download link will open automatically.</p>
+            <h3>Send me the guide</h3>
+            <p>Confirm your email after submitting and the selected download link will open automatically.</p>
           </div>
 
           <div class="form-grid">
@@ -207,25 +208,23 @@
           </div>
 
           <label>
-            <span>Main interest</span>
+            <span>Choose a guide</span>
             <select name="interest">
-              <option value="">Select one</option>
-              <option>Medicare planning</option>
-              <option>Life insurance</option>
-              <option>Final expense</option>
-              <option>Retirement protection</option>
-              <option>Not sure yet</option>
+              <option value="medicare">Medicare Timeline Guide</option>
+              <option value="social-security">Social Security &amp; Income Guide</option>
+              <option value="tax">Retirement Tax Guide</option>
+              <option value="family-protection">Family Protection Guide</option>
             </select>
           </label>
 
           <label class="checkbox-line">
             <input type="checkbox" name="emailConsent" required />
-            <span>I request the Retirement Blueprint and agree that Helms Retirement Solutions may contact me by email or phone about retirement, Medicare, and insurance-related options. I understand I can opt out at any time.</span>
+            <span>I request the selected retirement guide and agree that Helms Retirement Solutions may contact me by email or phone about retirement, Medicare, and insurance-related options. I understand I can opt out at any time.</span>
           </label>
 
           <label class="checkbox-line">
             <input type="checkbox" name="smsConsent" />
-            <span>I agree that Helms Retirement Solutions may contact me by text message. Message and data rates may apply. Consent is not required to receive the Retirement Blueprint.</span>
+            <span>I agree that Helms Retirement Solutions may contact me by text message. Message and data rates may apply. Consent is not required to receive a guide.</span>
           </label>
 
           <label class="hp-field" aria-hidden="true">
@@ -233,7 +232,7 @@
             <input type="text" name="company" tabindex="-1" autocomplete="off" />
           </label>
 
-          <button class="button button-primary" type="submit">Email My Blueprint</button>
+          <button class="button button-primary" type="submit">Email My Guide</button>
           <p class="form-status" data-blueprint-status role="status" aria-live="polite"></p>
           <p class="form-fine-print">By submitting, you agree to the site <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>. Helms Retirement Solutions is not affiliated with or endorsed by the U.S. government or the federal Medicare program.</p>
         </form>

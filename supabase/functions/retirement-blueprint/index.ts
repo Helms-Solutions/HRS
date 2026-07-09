@@ -1,10 +1,10 @@
 const consentText =
-  "I request the Retirement Blueprint and agree that Helms Retirement Solutions may contact me by email or phone about retirement, Medicare, and insurance-related options. I understand I can opt out at any time.";
+  "I request the selected retirement guide and agree that Helms Retirement Solutions may contact me by email or phone about retirement, Medicare, and insurance-related options. I understand I can opt out at any time.";
 
 const smsConsentText =
-  "I agree that Helms Retirement Solutions may contact me by text message at the phone number provided. Message and data rates may apply. Consent is not required to receive the Retirement Blueprint.";
+  "I agree that Helms Retirement Solutions may contact me by text message at the phone number provided. Message and data rates may apply. Consent is not required to receive a guide.";
 
-const formVersion = "retirement-blueprint-2026-07-06";
+const formVersion = "retirement-guide-series-2026-07-08";
 const publicFunctionUrl =
   "https://uqkchegglsznnxbynhjp.supabase.co/functions/v1/retirement-blueprint";
 const defaultBlueprintDownloadUrl =
@@ -23,11 +23,65 @@ type BlueprintRequest = {
   phone?: string;
   state?: string;
   interest?: string;
+  guideTitle?: string;
   emailConsent?: boolean;
   smsConsent?: boolean;
   sourcePage?: string;
   company?: string;
 };
+
+const siteOrigin = Deno.env.get("PUBLIC_SITE_ORIGIN") ?? "https://www.helmsretirement.com";
+
+const guideCatalog: Record<string, { title: string; url: string }> = {
+  "medicare": {
+    title: "Medicare Timeline Guide",
+    url: `${siteOrigin}/assets/medicare-timeline-guide-helms-retirement-solutions.pdf`,
+  },
+  "social-security": {
+    title: "Social Security & Income Guide",
+    url: `${siteOrigin}/assets/social-security-income-guide-helms-retirement-solutions.pdf`,
+  },
+  "tax": {
+    title: "Retirement Tax Guide",
+    url: `${siteOrigin}/assets/retirement-tax-guide-helms-retirement-solutions.pdf`,
+  },
+  "family-protection": {
+    title: "Family Protection Guide",
+    url: `${siteOrigin}/assets/family-protection-guide-helms-retirement-solutions.pdf`,
+  },
+  "retirement-blueprint": {
+    title: "Retirement Blueprint",
+    url: defaultBlueprintDownloadUrl,
+  },
+};
+
+const guideAliases: Record<string, string> = {
+  "": "medicare",
+  "medicare planning": "medicare",
+  "medicare": "medicare",
+  "retirement income": "social-security",
+  "social security": "social-security",
+  "social-security": "social-security",
+  "taxes": "tax",
+  "tax": "tax",
+  "estate planning": "family-protection",
+  "family protection": "family-protection",
+  "family-protection": "family-protection",
+  "life insurance": "family-protection",
+  "final expense": "family-protection",
+  "retirement protection": "family-protection",
+  "general retirement review": "retirement-blueprint",
+};
+
+function normalizeGuideId(value: string | null | undefined) {
+  const raw = String(value ?? "").trim().toLowerCase();
+  return guideAliases[raw] ?? (guideCatalog[raw] ? raw : "medicare");
+}
+
+function getGuide(value: string | null | undefined) {
+  const id = normalizeGuideId(value);
+  return { id, ...guideCatalog[id] };
+}
 
 function json(body: Record<string, unknown>, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -132,7 +186,8 @@ async function handleRequest(request: Request) {
   const email = body.email?.trim().toLowerCase();
   const phone = body.phone?.trim() ?? "";
   const state = body.state?.trim() ?? "";
-  const interest = body.interest?.trim() ?? "";
+  const guide = getGuide(body.interest);
+  const interest = guide.id;
   const sourcePage = body.sourcePage?.trim() ?? "";
 
   if (!firstName || !email || !body.emailConsent) {
@@ -182,11 +237,11 @@ async function handleRequest(request: Request) {
 
   await sendEmail({
     to: email,
-    subject: "Confirm your Retirement Blueprint download",
+    subject: `Confirm your ${guide.title} download`,
     html: `
       <p>Hi ${escapeHtml(firstName)},</p>
-      <p>Thanks for requesting the Retirement Blueprint from Helms Retirement Solutions.</p>
-      <p><a href="${downloadUrl}">Confirm your email and download the blueprint</a>.</p>
+      <p>Thanks for requesting the ${escapeHtml(guide.title)} from Helms Retirement Solutions.</p>
+      <p><a href="${downloadUrl}">Confirm your email and download the guide</a>.</p>
       <p>If you did not request this, you can ignore this email.</p>
       <p>Helms Retirement Solutions<br />
       <a href="tel:+14022376592">(402) 237-6592</a></p>
@@ -194,15 +249,14 @@ async function handleRequest(request: Request) {
     `,
   });
 
-  return json({ ok: true, message: "Please check your email to confirm and download the blueprint." });
+  return json({ ok: true, message: `Please check your email to confirm and download the ${guide.title}.` });
 }
 
 async function handleDownload(request: Request) {
   const token = new URL(request.url).searchParams.get("token");
-  const blueprintUrl = defaultBlueprintDownloadUrl;
   const notificationEmail = Deno.env.get("LEAD_NOTIFICATION_EMAIL");
 
-  if (!token || !blueprintUrl) {
+  if (!token) {
     return new Response("This download link is not available.", { status: 400, headers: corsHeaders });
   }
 
@@ -225,6 +279,7 @@ async function handleDownload(request: Request) {
 
   const now = new Date().toISOString();
   const firstDownload = !lead.downloaded_at;
+  const guide = getGuide(lead.interest);
 
   await supabase(`retirement_blueprint_leads?id=eq.${lead.id}`, {
     method: "PATCH",
@@ -240,16 +295,16 @@ async function handleDownload(request: Request) {
     await sendEmail({
       to: notificationEmail,
       subject: firstDownload
-        ? "Retirement Blueprint downloaded"
-        : "Retirement Blueprint downloaded again",
+        ? `${guide.title} downloaded`
+        : `${guide.title} downloaded again`,
       replyTo: lead.email,
       html: `
-        <h2>Retirement Blueprint download</h2>
+        <h2>${escapeHtml(guide.title)} download</h2>
         <p><strong>Name:</strong> ${escapeHtml(`${lead.first_name ?? ""} ${lead.last_name ?? ""}`.trim())}</p>
         <p><strong>Email:</strong> ${escapeHtml(lead.email)}</p>
         <p><strong>Phone:</strong> ${escapeHtml(lead.phone)}</p>
         <p><strong>State:</strong> ${escapeHtml(lead.state)}</p>
-        <p><strong>Interest:</strong> ${escapeHtml(lead.interest)}</p>
+        <p><strong>Guide:</strong> ${escapeHtml(guide.title)}</p>
         <p><strong>Email consent:</strong> ${lead.email_consent ? "Yes" : "No"}</p>
         <p><strong>Text consent:</strong> ${lead.sms_consent ? "Yes" : "No"}</p>
         <p><strong>Downloaded at:</strong> ${escapeHtml(now)}</p>
@@ -257,7 +312,7 @@ async function handleDownload(request: Request) {
     });
   }
 
-  return Response.redirect(blueprintUrl, 302);
+  return Response.redirect(guide.url, 302);
 }
 
 Deno.serve(async (request) => {
