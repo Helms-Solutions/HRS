@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from PIL import Image, ImageDraw
 from reportlab.graphics import renderPDF
 from reportlab.graphics.barcode import qr
 from reportlab.graphics.shapes import Drawing
@@ -32,6 +33,8 @@ WEBSITE = "helmsretirement.com"
 BOOK_URL = "https://calendly.com/helmsretirement"
 LOGO = ASSETS / "helms-logo.png"
 HEADSHOT = ASSETS / "headshot_1.jpg"
+TMP = ROOT / "tmp"
+PROFILE_IMAGE = TMP / "guide-profile-headshot.png"
 
 
 GUIDES = [
@@ -289,6 +292,28 @@ def qr_code(c, x, y, size, value):
     renderPDF.draw(d, c, x, y - size)
 
 
+def prepare_profile_image():
+    if not HEADSHOT.exists():
+        return None
+
+    TMP.mkdir(parents=True, exist_ok=True)
+    image = Image.open(HEADSHOT).convert("RGBA")
+    width, height = image.size
+    side = min(width, height)
+    left = (width - side) // 2
+    top = max(0, int((height - side) * 0.38))
+    image = image.crop((left, top, left + side, top + side)).resize((320, 320), Image.LANCZOS)
+
+    mask = Image.new("L", (320, 320), 0)
+    draw = ImageDraw.Draw(mask)
+    draw.ellipse((0, 0, 319, 319), fill=255)
+
+    output = Image.new("RGBA", (320, 320), (255, 255, 255, 0))
+    output.paste(image, (0, 0), mask)
+    output.save(PROFILE_IMAGE)
+    return PROFILE_IMAGE
+
+
 def cover(c, guide):
     c.setFillColor(NAVY)
     c.rect(0, 0, WIDTH, HEIGHT, fill=1, stroke=0)
@@ -450,15 +475,21 @@ def cta_page(c, guide):
         y -= 34
 
     card(c, 326, 562, 228, 210, fill=SOFT_BLUE)
-    if HEADSHOT.exists():
-        c.drawImage(str(HEADSHOT), 346, 512, width=72, height=72, preserveAspectRatio=True, mask="auto")
     c.setFillColor(NAVY)
-    c.setFont("Helvetica-Bold", 15)
-    c.drawString(346, 474, "Meet Travis Helms")
+    c.roundRect(326, 562, 228, -56, 8, fill=1, stroke=0)
+    c.setFillColor(GOLD_2)
+    c.circle(440, 502, 48, fill=1, stroke=0)
+    c.setFillColor(WHITE)
+    c.circle(440, 502, 43, fill=1, stroke=0)
+    if PROFILE_IMAGE.exists():
+        c.drawImage(str(PROFILE_IMAGE), 399, 461, width=82, height=82, mask="auto")
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 16)
+    c.drawCentredString(440, 438, "Meet Travis Helms")
     c.setFillColor(GOLD)
     c.setFont("Helvetica-Bold", 8.5)
-    c.drawString(346, 456, "INDEPENDENT RETIREMENT STRATEGIST")
-    wrapped(c, "Helping families retire with confidence through education, not pressure.", 346, 434, 176, size=9.4, leading=12, color=MUTED)
+    c.drawCentredString(440, 420, "INDEPENDENT RETIREMENT STRATEGIST")
+    para(c, "Helping families retire with confidence through education, not pressure.", 352, 396, 176, size=9.3, leading=12, color=MUTED, align="CENTER")
 
     card(c, 58, 322, 306, 94, fill=colors.HexColor("#FFF8EA"), stroke=GOLD_2)
     para(c, '"Travis made Medicare easy to understand and helped us avoid an expensive mistake."', 78, 284, 266, size=11, leading=15, color=NAVY, bold=True)
@@ -495,6 +526,7 @@ def build_guide(guide):
 
 
 def main():
+    prepare_profile_image()
     for guide in GUIDES:
         output_path, public_path = build_guide(guide)
         print(f"Created {output_path}")
