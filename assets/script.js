@@ -1,3 +1,29 @@
+const META_PIXEL_ID = "2084492505493969";
+
+(function initializeMetaPixel(windowObject, documentObject, scriptTag, pixelUrl, fbq, firstScript) {
+  if (windowObject.fbq) return;
+
+  fbq = windowObject.fbq = function () {
+    fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments);
+  };
+
+  if (!windowObject._fbq) windowObject._fbq = fbq;
+  fbq.push = fbq;
+  fbq.loaded = true;
+  fbq.version = "2.0";
+  fbq.queue = [];
+
+  firstScript = documentObject.createElement(scriptTag);
+  firstScript.async = true;
+  firstScript.src = pixelUrl;
+
+  const existingScript = documentObject.getElementsByTagName(scriptTag)[0];
+  existingScript.parentNode.insertBefore(firstScript, existingScript);
+})(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+window.fbq("init", META_PIXEL_ID);
+window.fbq("track", "PageView");
+
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector(".site-nav");
 
@@ -117,6 +143,13 @@ if (blueprintForm) {
 
       if (!response.ok) {
         throw new Error(result.error || "Please try again.");
+      }
+
+      if (window.fbq) {
+        window.fbq("track", "Lead", {
+          content_name: payload.guideTitle,
+          content_category: "Retirement Guide",
+        });
       }
 
       blueprintForm.reset();
