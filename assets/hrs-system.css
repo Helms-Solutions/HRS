@@ -1,0 +1,31 @@
+:root{--hrs-navy:#07172b;--hrs-blue:#0f4c81;--hrs-sky:#2f80ed;--hrs-gold:#d6ad55;--hrs-ice:#eef6ff;--hrs-ink:#172033;--hrs-muted:#667085;--hrs-white:#fff;--hrs-line:#dce7f2;--hrs-shadow:0 24px 70px rgba(7,23,43,.15)}
+.hrs-page{background:linear-gradient(180deg,#fff 0,#f5f9fd 50%,#fff 100%);color:var(--hrs-ink)}
+.hrs-shell{width:min(1120px,calc(100% - 32px));margin:auto}
+.hrs-hero{padding:96px 0 82px;color:#fff;background:radial-gradient(circle at 80% 15%,rgba(47,128,237,.35),transparent 30%),linear-gradient(135deg,var(--hrs-navy),#0b3157 62%,#123d68)}
+.hrs-kicker{margin:0 0 14px;color:#9dc9ff;font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.hrs-hero h1{max-width:900px;margin:0;font-size:clamp(2.7rem,7vw,5.8rem);line-height:.98;letter-spacing:-.05em}
+.hrs-hero p{max-width:760px;color:rgba(255,255,255,.84);font-size:1.15rem}
+.hrs-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hrs-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 22px;border-radius:8px;font-weight:800;text-decoration:none;border:1px solid transparent}
+.hrs-btn-primary{background:linear-gradient(135deg,#5da9ff,var(--hrs-sky));color:#fff;box-shadow:0 15px 35px rgba(47,128,237,.3)}
+.hrs-btn-secondary{border-color:rgba(255,255,255,.28);color:#fff;background:rgba(255,255,255,.08)}
+.hrs-section{padding:78px 0}
+.hrs-section h2{max-width:760px;margin:0 0 14px;font-size:clamp(2rem,4vw,3.5rem);line-height:1.05;letter-spacing:-.035em}
+.hrs-lead{max-width:760px;color:var(--hrs-muted);font-size:1.08rem}
+.hrs-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.hrs-card{padding:30px;border:1px solid var(--hrs-line);border-radius:16px;background:#fff;box-shadow:var(--hrs-shadow)}
+.hrs-letter{display:grid;place-items:center;width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--hrs-sky),var(--hrs-blue));color:#fff;font-size:1.6rem;font-weight:900}
+.hrs-card h3{margin:18px 0 8px;font-size:1.45rem}
+.hrs-card p{margin:0;color:var(--hrs-muted)}
+.hrs-band{padding:70px 0;color:#fff;background:linear-gradient(135deg,var(--hrs-navy),var(--hrs-blue))}
+.hrs-score-shell{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:24px;align-items:start}
+.hrs-score-card,.hrs-result{padding:30px;border:1px solid var(--hrs-line);border-radius:16px;background:#fff;box-shadow:var(--hrs-shadow)}
+.hrs-progress{height:10px;overflow:hidden;border-radius:999px;background:#e7eef6}.hrs-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--hrs-blue),var(--hrs-sky));transition:width .25s ease}
+.hrs-question{margin:28px 0}.hrs-question h3{margin:0 0 14px}.hrs-options{display:grid;gap:10px}.hrs-options label{display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid var(--hrs-line);border-radius:10px;cursor:pointer}.hrs-options label:has(input:checked){border-color:var(--hrs-sky);background:var(--hrs-ice)}
+.hrs-score-actions{display:flex;justify-content:space-between;gap:12px;margin-top:24px}.hrs-score-actions button{min-height:46px;padding:12px 18px;border-radius:8px;border:0;font-weight:800;cursor:pointer}.hrs-next{background:var(--hrs-blue);color:#fff}.hrs-back{background:#edf2f7;color:var(--hrs-ink)}
+.hrs-result-number{font-size:4rem;font-weight:900;line-height:1;color:var(--hrs-blue)}
+.hrs-pill{display:inline-block;margin:8px 6px 0 0;padding:7px 10px;border-radius:999px;background:var(--hrs-ice);color:var(--hrs-blue);font-weight:800;font-size:.82rem}
+.hrs-webinar-frame{aspect-ratio:16/9;display:grid;place-items:center;border-radius:18px;background:linear-gradient(135deg,var(--hrs-navy),var(--hrs-blue));color:#fff;box-shadow:var(--hrs-shadow);text-align:center;padding:30px}
+.hrs-checklist{display:grid;gap:12px;margin:24px 0 0;padding:0;list-style:none}.hrs-checklist li{position:relative;padding-left:28px}.hrs-checklist li:before{content:'✓';position:absolute;left:0;color:#63b3ff;font-weight:900}
+.hrs-disclaimer{font-size:.82rem;color:var(--hrs-muted)}
+@media(max-width:850px){.hrs-grid-3,.hrs-score-shell{grid-template-columns:1fr}.hrs-hero{padding:72px 0 62px}.hrs-section{padding:58px 0}}
